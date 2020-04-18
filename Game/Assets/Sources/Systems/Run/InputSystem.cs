@@ -27,7 +27,7 @@ public class InputSystem : IExecuteSystem {
       }
       if (directionalInput == DirectionalInput.RIGHT) {
         var newLane = player.lane.lane + 1;
-        player.ReplaceLane(newLane <= road.numLanes ? newLane : road.numLanes);
+        player.ReplaceLane(newLane < road.numLanes ? newLane : road.numLanes - 1);
       }
     }
   }

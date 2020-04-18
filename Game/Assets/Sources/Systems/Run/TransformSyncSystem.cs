@@ -7,16 +7,16 @@ public class TransformSyncSystem : ReactiveSystem<GameEntity> {
   }
 
   protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-    return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.Lane, GameMatcher.View));
+    return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.Lane,  GameMatcher.RoadPosition, GameMatcher.View));
   }
 
   protected override bool Filter(GameEntity entity) {
-    return entity.hasLane && entity.hasView;
+    return entity.hasLane && entity.hasView && entity.hasRoadPosition;
   }
 
   protected override void Execute(List<GameEntity> entities) {
     foreach (var entity in entities) {
-      entity.view.gameObject.transform.position = new Vector3(entity.lane.lane, 0, 0);
+      entity.view.gameObject.transform.position = new Vector3(entity.lane.lane, entity.roadPosition.distanceFromStart, 0);
     }
   }
 }

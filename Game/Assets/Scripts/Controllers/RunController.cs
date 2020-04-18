@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 namespace Controllers {
 public class RunController : MonoBehaviour, InputAccessor {
   public ContextHolder contextHolder;
+  public RoadDictionary roadDictionary;
   private Scene roomScene;
   public GameObject playerObjectPrefab;
 
@@ -24,18 +25,33 @@ public class RunController : MonoBehaviour, InputAccessor {
         DontDestroyOnLoad(contextObserver.gameObject);
     #endif
 
+    // TODO Cleanup this
+    if (!contexts.game.hasRunDescription) {
+      contexts.game.SetRunDescription("food", 1000);
+    }
+
     _systems
+      // Init
       .Add(new EnemySpawnSystem(contexts))
+      .Add(new RoadCreationSystem(contexts, roadDictionary))
+
+      // Update
       .Add(new InputSystem(contexts, this))
+      .Add(new RunSystem(contexts))
+
       .Add(new TransformSyncSystem(contexts))
-      .Add(new RenderSystem())
+
+      // Render
+      .Add(new FollowingCameraSystem(contexts, Camera.main))
+      .Add(new RoadRenderSystem())
+
       ;
 
     var player = contexts.game.CreateEntity();
     player.isPlayer = true;
     player.AddLane(0);
+    player.AddRoadPosition(0);
     player.AddView(Instantiate(playerObjectPrefab));
-    contexts.game.SetRoad(4);
 
     _systems.Initialize();
   }

@@ -17,10 +17,11 @@ public static class GameComponentsLookup {
     public const int Panic = 6;
     public const int Player = 7;
     public const int Road = 8;
-    public const int RunDescription = 9;
-    public const int View = 10;
+    public const int RoadPosition = 9;
+    public const int RunDescription = 10;
+    public const int View = 11;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
         "Enemy",
@@ -32,6 +33,7 @@ public static class GameComponentsLookup {
         "Panic",
         "Player",
         "Road",
+        "RoadPosition",
         "RunDescription",
         "View"
     };
@@ -46,6 +48,7 @@ public static class GameComponentsLookup {
         typeof(Panic),
         typeof(Player),
         typeof(Road),
+        typeof(RoadPosition),
         typeof(RunDescription),
         typeof(View)
     };
