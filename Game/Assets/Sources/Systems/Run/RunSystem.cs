@@ -10,7 +10,7 @@ public class RunSystem : IExecuteSystem {
 
   public void Execute() {
     foreach (var player in _players) {
-      player.ReplaceRoadPosition(player.roadPosition.distanceFromStart + 1 * Time.deltaTime);
+      player.ReplaceRoadPosition(player.roadPosition.distanceFromStart + 5 * Time.deltaTime);
     }
   }
 }

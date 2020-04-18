@@ -15,6 +15,7 @@ public class RunController : MonoBehaviour, InputAccessor {
   public GameObject playerObjectPrefab;
 
   private Systems _systems = new Systems();
+  public UIProgressController uiProgressControler;
 
   private void Start() {
     roomScene = SceneManager.GetSceneByName("Room");
@@ -44,6 +45,7 @@ public class RunController : MonoBehaviour, InputAccessor {
       // Render
       .Add(new FollowingCameraSystem(contexts, Camera.main))
       .Add(new RoadRenderSystem())
+      .Add(new RunProgressUpdateSystem(contexts, (progress) => uiProgressControler.updateProgress(progress)))
 
       ;
 

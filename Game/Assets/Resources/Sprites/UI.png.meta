@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 228b396067be24155a6fe52ff5888f22
+guid: cdf11efe7013542c1a579e28f0b5ea89
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1598845409260377245
-    second: Road_full
+      213: 7682994003733143199
+    second: RoadProgress
   - first:
-      213: 4316038238677396063
-    second: Road1
+      213: -8994148858587888516
+    second: RoadProgressStart
   - first:
-      213: -8071345958675567674
-    second: Road2
+      213: 7991754927562077050
+    second: RoadProgressEnd
   - first:
-      213: 6484540103039488943
-    second: Player
+      213: 4667090623120792054
+    second: RoadProgressPlayer_1
   - first:
-      213: -2963639498686657488
-    second: Enemy
+      213: -1543630088660135423
+    second: RoadProgressPlayer_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Road_full
+      name: RoadProgress
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adaea14f99b57443e8c5d6d32eb7ee06
-      internalID: 1598845409260377245
+      spriteID: ebcfb00f32ac54b8394581834547c145
+      internalID: 7682994003733143199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Road1
+      name: RoadProgressStart
       rect:
         serializedVersion: 2
         x: 32
@@ -136,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 044aa38f69cbe4ce2aa19429e440a73b
-      internalID: 4316038238677396063
+      spriteID: 84b0139a745f04099aa6bf6e43daf4b5
+      internalID: -8994148858587888516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Road2
+      name: RoadProgressEnd
       rect:
         serializedVersion: 2
         x: 0
@@ -157,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 453a31c9d2b8a4135a21b04390f741e9
-      internalID: -8071345958675567674
+      spriteID: 3ab82e37f8a5f4ddaa5d8b22ffaf58b2
+      internalID: 7991754927562077050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player
+      name: RoadProgressPlayer_1
       rect:
         serializedVersion: 2
         x: 32
@@ -178,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e7c5fb15c95449d1884c322db9c028d
-      internalID: 6484540103039488943
+      spriteID: 96fd7eba587004997b4bc462a81f38fd
+      internalID: 4667090623120792054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy
+      name: RoadProgressPlayer_2
       rect:
         serializedVersion: 2
         x: 0
@@ -199,8 +199,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fa7ef257ae3d434f90af880f0b7cd68
-      internalID: -2963639498686657488
+      spriteID: 355f29f4d74b8436cbffe611aad16ac5
+      internalID: -1543630088660135423
       vertices: []
       indices: 
       edges: []
