@@ -8,15 +8,45 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int Enemy = 0;
+    public const int Food = 1;
+    public const int GameDay = 2;
+    public const int Lane = 3;
+    public const int Level = 4;
+    public const int Money = 5;
+    public const int Panic = 6;
+    public const int Player = 7;
+    public const int Road = 8;
+    public const int RunDescription = 9;
+    public const int View = 10;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
-
+        "Enemy",
+        "Food",
+        "GameDay",
+        "Lane",
+        "Level",
+        "Money",
+        "Panic",
+        "Player",
+        "Road",
+        "RunDescription",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Enemy),
+        typeof(Food),
+        typeof(GameDay),
+        typeof(Lane),
+        typeof(Level),
+        typeof(Money),
+        typeof(Panic),
+        typeof(Player),
+        typeof(Road),
+        typeof(RunDescription),
+        typeof(View)
     };
 }
