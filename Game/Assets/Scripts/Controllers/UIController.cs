@@ -10,6 +10,6 @@ public class UIController : MonoBehaviour {
 
     void LateUpdate() {
         var cameraPos = Camera.main.transform.position;
-        gameObject.transform.position = new Vector3(cameraPos.x, cameraPos.y, 0);
+        gameObject.transform.position = new Vector3(0, cameraPos.y, 0);
     }
 }

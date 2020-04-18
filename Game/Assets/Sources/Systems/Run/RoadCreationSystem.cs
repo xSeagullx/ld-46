@@ -13,20 +13,21 @@ public class RoadCreationSystem : IInitializeSystem {
 
   public void Initialize() {
     var runDescription = _contexts.game.runDescription;
-    int lanes = 4;
-    var tileTypes = new int[runDescription.distanceMeters * lanes];
 
+    string[] pattern = new[] {
+      "pavement", "pavement_side", "road", "road_dash", "road", "road_solid", "road_solid_f", "road", "road_dash_f",
+      "road", "pavement_side_f", "pavement"
+    };
+
+    int lanes = pattern.Length;
     for (int distance = 0; distance < runDescription.distanceMeters; distance++) {
       for (int lane = 0; lane < lanes; lane++) {
-        var tileType = Random.Range(0, 5);
-        tileTypes[distance * lane] = tileType;
         var roadEntity = _contexts.game.CreateEntity();
         roadEntity.AddLane(lane);
-        _roadDictionary.SetupView(roadEntity, tileType, lane, distance);
+        _roadDictionary.SetupView(roadEntity, pattern[lane], lane, distance);
       }
     }
 
     _contexts.game.ReplaceRoad(lanes);
-    _contexts.game.ReplaceLevel(tileTypes);
   }
 }

@@ -41,6 +41,7 @@ public class RunController : MonoBehaviour, InputAccessor {
       .Add(new RunSystem(contexts))
 
       .Add(new TransformSyncSystem(contexts))
+      .Add(new RoadCullingSystem(contexts, Camera.main))
 
       // Render
       .Add(new FollowingCameraSystem(contexts, Camera.main))

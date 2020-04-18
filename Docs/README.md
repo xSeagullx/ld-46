@@ -13,3 +13,14 @@ You have to survive one week.
 Place you live.
 Has food supply, med supply, money.
 Has a PC, to work remotely, watch cat pictures, or order food / meds.
+
+
+# UI & Resoulution
+Tile size: 32x32
+Resoulution: 480x854
+12 Lanes (2 * pavement, 4 * road * 2 * pavement) == 384
+480 - 384 == 96 (side parts)
+Visible road: 22 * 12 tiles, 704 * 384 pixels
+854 - 704 == 150 pixel - menu.
+
+Orthographic size = ((854)/(32)) * 0.5

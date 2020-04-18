@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIProgressController : MonoBehaviour {
+    private const int PROGRESS_WIDTH = 10; // Same as width of Progress GO, refactor later
     public GameObject uiProgressGO;
     public Sprite[] progressAnimationSteps;
 
@@ -20,7 +21,7 @@ public class UIProgressController : MonoBehaviour {
 
     public void updateProgress(float progress) {
         var position = uiProgressGO.transform.position;
-        position = new Vector3(progress * 5, position.y, position.z);
+        position = new Vector3(progress * PROGRESS_WIDTH, position.y, position.z);
         uiProgressGO.transform.position = position;
     }
 }
