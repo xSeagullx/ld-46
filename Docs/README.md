@@ -23,4 +23,4 @@ Resoulution: 480x854
 Visible road: 22 * 12 tiles, 704 * 384 pixels
 854 - 704 == 150 pixel - menu.
 
-Orthographic size = ((854)/(32)) * 0.5
+Orthographic size = ((480)/(32)) * 0.5

@@ -14,3 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadPrefab: {fileID: 737039209398181710, guid: 2a8730297aed34194be7b37178f54ae2,
     type: 3}
+  road: {fileID: -7011661911796687584, guid: af393be0ae1f743828cf9d1b8c1bd08b, type: 3}
+  road_dash: {fileID: -3863891454425043372, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  road_dash_f: {fileID: 341726815534335866, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  road_solid: {fileID: -9156105234983019131, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  road_solid_f: {fileID: 7952162831368261598, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  pavement: {fileID: -1051987289298369614, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  pavement_side: {fileID: -4761944228523693652, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}
+  pavement_side_f: {fileID: -2291289878801108978, guid: af393be0ae1f743828cf9d1b8c1bd08b,
+    type: 3}

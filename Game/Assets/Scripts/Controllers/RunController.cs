@@ -28,7 +28,7 @@ public class RunController : MonoBehaviour, InputAccessor {
 
     // TODO Cleanup this
     if (!contexts.game.hasRunDescription) {
-      contexts.game.SetRunDescription("food", 1000);
+      contexts.game.SetRunDescription("food", 100);
     }
 
     _systems
