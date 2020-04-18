@@ -10,25 +10,32 @@ public class InputSystem : IExecuteSystem {
   public InputSystem(Contexts contexts, InputAccessor inputAccessor) {
     _contexts = contexts;
     _inputAccessor = inputAccessor;
-    _players = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.Lane));
+    _players = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.Lane)
+      .NoneOf(GameMatcher.HitRecoveryState));
   }
 
   public void Execute() {
+    var player = _players.GetSingleEntity();
+    if (player == null)
+      return;
+
     var directionalInput = _inputAccessor.GetDirectionalInput();
     if (directionalInput == DirectionalInput.NONE)
       return;
 
     var road = _contexts.game.road;
+
     
-    foreach (var player in _players) {
-      if (directionalInput == DirectionalInput.LEFT) {
-        var newLane = player.lane.lane - 1;
-        player.ReplaceLane(newLane > 0 ? newLane : 0);
-      }
-      if (directionalInput == DirectionalInput.RIGHT) {
-        var newLane = player.lane.lane + 1;
-        player.ReplaceLane(newLane < road.numLanes ? newLane : road.numLanes - 1);
-      }
+    if (directionalInput == DirectionalInput.LEFT) {
+      var newLane = player.lane.lane - 1;
+      newLane = newLane > 0 ? newLane : 0;
+      player.ReplaceLane(newLane, newLane);
+    }
+
+    if (directionalInput == DirectionalInput.RIGHT) {
+      var newLane = player.lane.lane + 1;
+      newLane = newLane < road.numLanes ? newLane : road.numLanes - 1;
+      player.ReplaceLane(newLane, newLane);
     }
   }
 }

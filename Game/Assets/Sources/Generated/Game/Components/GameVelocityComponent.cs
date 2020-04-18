@@ -8,27 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Lane lane { get { return (Lane)GetComponent(GameComponentsLookup.Lane); } }
-    public bool hasLane { get { return HasComponent(GameComponentsLookup.Lane); } }
+    public Velocity velocity { get { return (Velocity)GetComponent(GameComponentsLookup.Velocity); } }
+    public bool hasVelocity { get { return HasComponent(GameComponentsLookup.Velocity); } }
 
-    public void AddLane(int newLane, int newLane2) {
-        var index = GameComponentsLookup.Lane;
-        var component = (Lane)CreateComponent(index, typeof(Lane));
-        component.lane = newLane;
-        component.lane2 = newLane2;
+    public void AddVelocity(float newValue) {
+        var index = GameComponentsLookup.Velocity;
+        var component = (Velocity)CreateComponent(index, typeof(Velocity));
+        component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceLane(int newLane, int newLane2) {
-        var index = GameComponentsLookup.Lane;
-        var component = (Lane)CreateComponent(index, typeof(Lane));
-        component.lane = newLane;
-        component.lane2 = newLane2;
+    public void ReplaceVelocity(float newValue) {
+        var index = GameComponentsLookup.Velocity;
+        var component = (Velocity)CreateComponent(index, typeof(Velocity));
+        component.value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveLane() {
-        RemoveComponent(GameComponentsLookup.Lane);
+    public void RemoveVelocity() {
+        RemoveComponent(GameComponentsLookup.Velocity);
     }
 }
 
@@ -42,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherLane;
+    static Entitas.IMatcher<GameEntity> _matcherVelocity;
 
-    public static Entitas.IMatcher<GameEntity> Lane {
+    public static Entitas.IMatcher<GameEntity> Velocity {
         get {
-            if (_matcherLane == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Lane);
+            if (_matcherVelocity == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Velocity);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherLane = matcher;
+                _matcherVelocity = matcher;
             }
 
-            return _matcherLane;
+            return _matcherVelocity;
         }
     }
 }

@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextHolder: {fileID: 11400000, guid: 5b34c765d68a14045956efec8c928e43, type: 2}
   roadDictionary: {fileID: 11400000, guid: f03b89ac52b1b48eb97c6a95ad0fb2b6, type: 2}
+  enemyDictionary: {fileID: 11400000, guid: 6e3d6fe7c145a4e0cbac9ddb589a23cb, type: 2}
   playerObjectPrefab: {fileID: 1233388664990613914, guid: 1df3542a4640041fda12c4c83978e6fe,
     type: 3}
   uiProgressControler: {fileID: 35391512}

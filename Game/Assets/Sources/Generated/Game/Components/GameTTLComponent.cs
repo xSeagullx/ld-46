@@ -8,27 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Lane lane { get { return (Lane)GetComponent(GameComponentsLookup.Lane); } }
-    public bool hasLane { get { return HasComponent(GameComponentsLookup.Lane); } }
+    public TTL tTL { get { return (TTL)GetComponent(GameComponentsLookup.TTL); } }
+    public bool hasTTL { get { return HasComponent(GameComponentsLookup.TTL); } }
 
-    public void AddLane(int newLane, int newLane2) {
-        var index = GameComponentsLookup.Lane;
-        var component = (Lane)CreateComponent(index, typeof(Lane));
-        component.lane = newLane;
-        component.lane2 = newLane2;
+    public void AddTTL(float newSeconds) {
+        var index = GameComponentsLookup.TTL;
+        var component = (TTL)CreateComponent(index, typeof(TTL));
+        component.seconds = newSeconds;
         AddComponent(index, component);
     }
 
-    public void ReplaceLane(int newLane, int newLane2) {
-        var index = GameComponentsLookup.Lane;
-        var component = (Lane)CreateComponent(index, typeof(Lane));
-        component.lane = newLane;
-        component.lane2 = newLane2;
+    public void ReplaceTTL(float newSeconds) {
+        var index = GameComponentsLookup.TTL;
+        var component = (TTL)CreateComponent(index, typeof(TTL));
+        component.seconds = newSeconds;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveLane() {
-        RemoveComponent(GameComponentsLookup.Lane);
+    public void RemoveTTL() {
+        RemoveComponent(GameComponentsLookup.TTL);
     }
 }
 
@@ -42,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherLane;
+    static Entitas.IMatcher<GameEntity> _matcherTTL;
 
-    public static Entitas.IMatcher<GameEntity> Lane {
+    public static Entitas.IMatcher<GameEntity> TTL {
         get {
-            if (_matcherLane == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Lane);
+            if (_matcherTTL == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TTL);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherLane = matcher;
+                _matcherTTL = matcher;
             }
 
-            return _matcherLane;
+            return _matcherTTL;
         }
     }
 }

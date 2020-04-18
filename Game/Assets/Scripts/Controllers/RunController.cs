@@ -3,6 +3,7 @@ using Entitas;
 using ResourceDictionaries;
 using Sources;
 using Sources.Interfaces;
+using Sources.Systems;
 using Sources.Systems.Run;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ namespace Controllers {
 public class RunController : MonoBehaviour, InputAccessor {
   public ContextHolder contextHolder;
   public RoadDictionary roadDictionary;
+  public EnemyDictionary enemyDictionary;
   private Scene roomScene;
   public GameObject playerObjectPrefab;
 
@@ -33,14 +35,17 @@ public class RunController : MonoBehaviour, InputAccessor {
 
     _systems
       // Init
-      .Add(new EnemySpawnSystem(contexts))
       .Add(new RoadCreationSystem(contexts, roadDictionary))
+      .Add(new EnemySpawnSystem(contexts, (entity) => enemyDictionary.SetupView(entity)))
 
       // Update
+      .Add(new CarSpawningSystem(contexts, entity => enemyDictionary.SetupView(entity)))
       .Add(new InputSystem(contexts, this))
       .Add(new RunSystem(contexts))
+      .Add(new PlayerCollisionSystem(contexts))
 
       .Add(new TransformSyncSystem(contexts))
+      .Add(new PlayerRecoverySystem(contexts))
       .Add(new RoadCullingSystem(contexts, Camera.main))
 
       // Render
@@ -52,9 +57,10 @@ public class RunController : MonoBehaviour, InputAccessor {
 
     var player = contexts.game.CreateEntity();
     player.isPlayer = true;
-    player.AddLane(0);
+    player.AddLane(0, 0);
     player.AddRoadPosition(0);
     player.AddView(Instantiate(playerObjectPrefab));
+    player.AddVelocity(5);
 
     _systems.Initialize();
   }

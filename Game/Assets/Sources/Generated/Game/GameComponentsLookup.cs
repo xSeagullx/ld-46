@@ -11,30 +11,38 @@ public static class GameComponentsLookup {
     public const int Enemy = 0;
     public const int Food = 1;
     public const int GameDay = 2;
-    public const int Lane = 3;
-    public const int Level = 4;
-    public const int Money = 5;
-    public const int Panic = 6;
-    public const int Player = 7;
-    public const int Road = 8;
-    public const int RoadPosition = 9;
-    public const int RunDescription = 10;
-    public const int View = 11;
+    public const int HitRecoveryState = 3;
+    public const int Lane = 4;
+    public const int Level = 5;
+    public const int Money = 6;
+    public const int Panic = 7;
+    public const int Player = 8;
+    public const int PlayerCollision = 9;
+    public const int Road = 10;
+    public const int RoadPosition = 11;
+    public const int RunDescription = 12;
+    public const int TTL = 13;
+    public const int Velocity = 14;
+    public const int View = 15;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Enemy",
         "Food",
         "GameDay",
+        "HitRecoveryState",
         "Lane",
         "Level",
         "Money",
         "Panic",
         "Player",
+        "PlayerCollision",
         "Road",
         "RoadPosition",
         "RunDescription",
+        "TTL",
+        "Velocity",
         "View"
     };
 
@@ -42,14 +50,18 @@ public static class GameComponentsLookup {
         typeof(Enemy),
         typeof(Food),
         typeof(GameDay),
+        typeof(HitRecoveryState),
         typeof(Lane),
         typeof(Level),
         typeof(Money),
         typeof(Panic),
         typeof(Player),
+        typeof(PlayerCollision),
         typeof(Road),
         typeof(RoadPosition),
         typeof(RunDescription),
+        typeof(TTL),
+        typeof(Velocity),
         typeof(View)
     };
 }

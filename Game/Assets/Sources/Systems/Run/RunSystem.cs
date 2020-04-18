@@ -2,15 +2,15 @@ using Entitas;
 using UnityEngine;
 
 public class RunSystem : IExecuteSystem {
-  private IGroup<GameEntity> _players;
+  private IGroup<GameEntity> _movables;
 
   public RunSystem(Contexts contexts) {
-    _players = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Player, GameMatcher.RoadPosition));
+    _movables = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Velocity, GameMatcher.RoadPosition));
   }
 
   public void Execute() {
-    foreach (var player in _players) {
-      player.ReplaceRoadPosition(player.roadPosition.distanceFromStart + 5 * Time.deltaTime);
+    foreach (var movable in _movables) {
+      movable.ReplaceRoadPosition(movable.roadPosition.distanceFromStart + movable.velocity.value * Time.deltaTime);
     }
   }
 }
