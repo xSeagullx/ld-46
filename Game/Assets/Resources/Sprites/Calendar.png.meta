@@ -1,64 +1,31 @@
 fileFormatVersion: 2
-guid: cdf11efe7013542c1a579e28f0b5ea89
+guid: b96b3543c5e424a808ed000f688ce688
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7682994003733143199
-    second: RoadProgress
+      213: 5812652381993779911
+    second: day_1
   - first:
-      213: -8994148858587888516
-    second: RoadProgressStart
+      213: -5451405236440488627
+    second: day_2
   - first:
-      213: 7991754927562077050
-    second: RoadProgressEnd
+      213: -2033274634300159073
+    second: day_3
   - first:
-      213: 4667090623120792054
-    second: RoadProgressPlayer_1
+      213: -3498228283705849024
+    second: day_4
   - first:
-      213: -1543630088660135423
-    second: RoadProgressPlayer_2
+      213: -6443729342030540746
+    second: day_5
   - first:
-      213: -2359126797285079644
-    second: road_progress_start
+      213: 601750227929670889
+    second: day_6
   - first:
-      213: -5739601328325217618
-    second: road_progress
+      213: -4305315063607014233
+    second: day_7
   - first:
-      213: 1207059772344172304
-    second: road_progress_end
-  - first:
-      213: 8373215148646833053
-    second: progress_1
-  - first:
-      213: -3468368421259279120
-    second: progress_2
-  - first:
-      213: -3574820651616021983
-    second: heart
-  - first:
-      213: -651005011376069296
-    second: heart_empty
-  - first:
-      213: -4360656693393739468
-    second: heart_full
-  - first:
-      213: 3139502941324222999
-    second: panic_full
-  - first:
-      213: 6214055496063167082
-    second: panic_empty
-  - first:
-      213: 4509747750907760799
-    second: food
-  - first:
-      213: -4564998879385687842
-    second: meds
-  - first:
-      213: 857655313904648998
-    second: toilet
-  - first:
-      213: -2681560331693814863
-    second: money
+      213: 7954196476074364537
+    second: day_win
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -143,133 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: road_progress_start
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea7ccd33a73c84e08909ca7e9ea7a639
-      internalID: -2359126797285079644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: road_progress
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 047a3ade83372429389f0d634a657c0a
-      internalID: -5739601328325217618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: road_progress_end
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a36a824c09eca44a59b4bdbccd4bb9a9
-      internalID: 1207059772344172304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: progress_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a64202ee21bb48df804d475608f1768
-      internalID: 8373215148646833053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: progress_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9961366a9b0a448dfb24e9ab015fea15
-      internalID: -3468368421259279120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart_full
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdef7759031b641e2903b7a76bcd30d2
-      internalID: -4360656693393739468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart_empty
+      name: day_1
       rect:
         serializedVersion: 2
         x: 0
@@ -283,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32faba24639f04192a79fc1634e5e714
-      internalID: -651005011376069296
+      spriteID: 52a59524d802c42239776a20f9903568
+      internalID: 5812652381993779911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: panic_full
+      name: day_2
       rect:
         serializedVersion: 2
         x: 32
@@ -304,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d789ee965a7a4150a6910567f308d4b
-      internalID: 3139502941324222999
+      spriteID: 6e345bbc6d5394dfba8b81c57bae2c02
+      internalID: -5451405236440488627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: panic_empty
+      name: day_3
       rect:
         serializedVersion: 2
         x: 64
@@ -325,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72117650d5fb5438e96abbdeb331ffac
-      internalID: 6214055496063167082
+      spriteID: eab19eaf4178b4b92823386243538785
+      internalID: -2033274634300159073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food
+      name: day_4
       rect:
         serializedVersion: 2
         x: 0
@@ -346,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a81a07e8bcb2c42f1896a0ac9dbff86a
-      internalID: 4509747750907760799
+      spriteID: 99bf088b74e0940b8804ce4bd9d9e9ea
+      internalID: -3498228283705849024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: meds
+      name: day_5
       rect:
         serializedVersion: 2
         x: 32
@@ -367,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6abde2716e6f04b79b9a6ece95eee42e
-      internalID: -4564998879385687842
+      spriteID: 8b63d20f86f904d0789689b030983180
+      internalID: -6443729342030540746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: toilet
+      name: day_6
       rect:
         serializedVersion: 2
         x: 64
@@ -388,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8dd6a83116a944cab43fbfcc3617e59
-      internalID: 857655313904648998
+      spriteID: 03df0d700ad7846f6a9b88b6cc4886be
+      internalID: 601750227929670889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: money
+      name: day_7
       rect:
         serializedVersion: 2
         x: 0
@@ -409,8 +250,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb70ea018fda14aa6b667abe8e3e93c8
-      internalID: -2681560331693814863
+      spriteID: e941de728c6524a01932f3d58ef10be0
+      internalID: -4305315063607014233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: day_win
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d85f8ea7cc14897b45cfafdaf4a762
+      internalID: 7954196476074364537
       vertices: []
       indices: 
       edges: []

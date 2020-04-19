@@ -30,6 +30,8 @@ public class PlayerHealthSystem : ReactiveSystem<GameEntity>, IInitializeSystem 
   }
 
   public void Initialize() {
-    _contexts.game.GetGroup(GameMatcher.Player).GetSingleEntity().AddHealth(3, 3);
+    var player = _contexts.game.GetGroup(GameMatcher.Player).GetSingleEntity();
+    if (!player.hasHealth)
+      player.AddHealth(3, 3);
   }
 }

@@ -54,7 +54,7 @@ public class CarSpawningSystem : IExecuteSystem, IInitializeSystem {
         var laneDefinition = new LaneDefinition();
         laneDefinition.direction = i < roadPattern.Length / 2 ? Direction.UP : Direction.DOWN;
         laneDefinition.lineNo = i;
-        laneDefinition.nextSpawnTime = Time.time + Random.Range(2f, 5f);
+        laneDefinition.nextSpawnTime = Time.time + Random.Range(0, 2f);
         lanesToSpawn.Add(laneDefinition);
         i++;
       }

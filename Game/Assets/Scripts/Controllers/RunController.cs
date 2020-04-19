@@ -1,10 +1,9 @@
-using System;
+using System.Collections;
 using Entitas;
 using ResourceDictionaries;
-using Sources;
 using Sources.Interfaces;
-using Sources.Systems;
 using Sources.Systems.Run;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,20 +13,20 @@ public class RunController : MonoBehaviour, InputAccessor {
   public RoadDictionary roadDictionary;
   public EnemyDictionary enemyDictionary;
   public MiscDictionary miscDictionary; 
-  private Scene roomScene;
+  public SceneAsset roomScene;
   public GameObject playerObjectPrefab;
 
   private Systems _systems = new Systems();
   public UIProgressController uiProgressControler;
   public UIHeartController uiHealthController;
 
-  private void Start() {
-    roomScene = SceneManager.GetSceneByName("Room");
+  private string runOverReason;
 
+  private void Start() {
+    runOverReason = null;
     var contexts = contextHolder.contexts;
     #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
-        var contextObserver = new Entitas.VisualDebugging.Unity.ContextObserver(contexts.game);
-        DontDestroyOnLoad(contextObserver.gameObject);
+        new Entitas.VisualDebugging.Unity.ContextObserver(contexts.game);
     #endif
 
     // TODO Cleanup this
@@ -50,12 +49,13 @@ public class RunController : MonoBehaviour, InputAccessor {
       .Add(new PlayerRecoverySystem(contexts))
       .Add(new RoadCullingSystem(contexts, Camera.main))
       .Add(new WarningSystem(contexts, entity => miscDictionary.SetupView(entity)))
+      .Add(new RunEndSystem(contexts, reason => runOverReason = reason))
 
       // Render
       .Add(new FollowingCameraSystem(contexts, Camera.main))
       .Add(new RoadRenderSystem())
       .Add(new RunProgressUpdateSystem(contexts, (progress) => uiProgressControler.updateProgress(progress)))
-      .Add(new PlayerHealthSystem(contexts, health => uiHealthController.UpdatePlayerHeart(health.current), reason => EndRun(reason)))
+      .Add(new PlayerHealthSystem(contexts, health => uiHealthController.UpdatePlayerHeart(health.current), reason => runOverReason = reason))
 
       ;
 
@@ -65,12 +65,20 @@ public class RunController : MonoBehaviour, InputAccessor {
     player.AddRoadPosition(0);
     player.AddView(Instantiate(playerObjectPrefab));
     player.AddVelocity(5);
+    player.ReplaceHealth(1, 3);
 
+    _systems.ActivateReactiveSystems();
     _systems.Initialize();
   }
 
   private void Update() {
-    _systems.Execute();
+    if (runOverReason != null) {
+      EndRun(runOverReason);
+    }
+    else {
+      _systems.Execute();  
+      _systems.Cleanup();
+    }
   }
 
   public Vector2 GetMousePosition() {
@@ -90,7 +98,40 @@ public class RunController : MonoBehaviour, InputAccessor {
 
   public void EndRun(string reason) {
     Debug.Log("Run over for the reason " + reason);
-    SceneManager.LoadScene(roomScene.handle, LoadSceneMode.Single);
+    CalculateRunResults(reason);
+    _systems.DeactivateReactiveSystems();
+    contextHolder.contexts.game.DestroyAllEntities();
+
+    StartCoroutine(LoadRoomScene());
+  }
+
+  private void CalculateRunResults(string reason) {
+    void Add(string resource, int amount) {
+      var resourceModification = contextHolder.contexts.global.CreateEntity();
+      resourceModification.AddResourceModification(resource, amount);
+    }
+    if (reason.StartsWith("fail")) {
+      Add("panic", 30);
+      if (reason.EndsWith("injury")) {
+        Add("meds", -2);  
+      }
+    }
+    else {
+      Add("panic", -10);
+      Add("money", 100);
+      Add("food", 4);
+      Add("meds", 2);
+      Add("toilet", 1);
+    }
+  }
+  
+  private IEnumerator LoadRoomScene() {
+    Debug.Log("Loading scene " + roomScene.name + " " + roomScene.name);
+    SceneManager.LoadScene(roomScene.name, LoadSceneMode.Single);
+    
+    yield return null;
+    Debug.Log("Setting active scene " + roomScene.name + " " + roomScene.name);
+    SceneManager.SetActiveScene(SceneManager.GetSceneByName(roomScene.name));
   }
 }
 }

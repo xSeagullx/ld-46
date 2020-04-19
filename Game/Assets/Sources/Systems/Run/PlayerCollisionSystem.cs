@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-namespace Sources.Systems {
+namespace Sources.Systems.Run {
 public class PlayerCollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem {
   private readonly Contexts _contexts;
   private IGroup<GameEntity> _collisions;
