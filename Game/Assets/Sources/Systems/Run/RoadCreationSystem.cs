@@ -24,7 +24,7 @@ public class RoadCreationSystem : IInitializeSystem {
     };
 
     int lanes = pattern.Length;
-    for (int distance = 0; distance < runDescription.distanceMeters; distance++) {
+    for (int distance = 0; distance < runDescription.distanceMeters + 30; distance++) {
       for (int lane = 0; lane < lanes; lane++) {
         var roadEntity = _contexts.game.CreateEntity();
         roadEntity.AddLane(lane, lane);

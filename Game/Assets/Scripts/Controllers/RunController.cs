@@ -106,23 +106,35 @@ public class RunController : MonoBehaviour, InputAccessor {
   }
 
   private void CalculateRunResults(string reason) {
+    var globalContext = contextHolder.contexts.global;
+
     void Add(string resource, int amount) {
-      var resourceModification = contextHolder.contexts.global.CreateEntity();
+      var resourceModification = globalContext.CreateEntity();
       resourceModification.AddResourceModification(resource, amount);
     }
+
+    string messageText;
     if (reason.StartsWith("fail")) {
       Add("panic", 30);
-      if (reason.EndsWith("injury")) {
-        Add("meds", -2);  
+      if (reason.EndsWith("injured")) {
+        Add("meds", -2);
+        messageText = "Damn! I'm hit, have to go home!";
+      }
+      else {
+        messageText = "It's too scary there!!! I better stay at home!";
       }
     }
     else {
+      messageText = "Success! Got some goodies!";
       Add("panic", -10);
       Add("money", 100);
       Add("food", 4);
       Add("meds", 2);
       Add("toilet", 1);
     }
+    
+    var message = globalContext.CreateEntity();
+    message.AddMessageLog(messageText);
   }
   
   private IEnumerator LoadRoomScene() {

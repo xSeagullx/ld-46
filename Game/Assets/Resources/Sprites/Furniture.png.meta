@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: fda6876c695c8482eb594ec6b136f2f6
+guid: a5f6eb1a6b3f64208abb5d9ea24eb6e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7921649188387484213
-    second: Car_0
+      213: 2804968355760249059
+    second: Desk
   - first:
-      213: -1622950104464118520
-    second: Car
+      213: 7443488731601174181
+    second: Floor
   - first:
-      213: -6327107731223078017
-    second: Bed
+      213: -6648287958793743634
+    second: wall_window
   - first:
-      213: 4473492142677930137
-    second: Table
-  - first:
-      213: -6287002357799567390
-    second: Door
+      213: 2535077307327378650
+    second: wall
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -62,7 +59,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -101,74 +98,53 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Car_0
+      name: Desk
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 44
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f424d7216bc84a89aada2363bd7d147
+      internalID: 2804968355760249059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a26664f2cf8f417f893a5a07aefef1a
+      internalID: 7443488731601174181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_window
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 998474a913090407b9ae43e800d2e64a
-      internalID: -7921649188387484213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Car
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11f83012dba2e4f3a9653c0bf94e5773
-      internalID: -1622950104464118520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bed
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44c678dcad84b4abda6290da9b0db0af
-      internalID: -6327107731223078017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Table
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -178,19 +154,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f68a841ac2304b8cb461d8e35390e39
-      internalID: 4473492142677930137
+      spriteID: f0b21a442d0cd4ac0ab3482bd130c478
+      internalID: -6648287958793743634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door
+      name: wall
       rect:
         serializedVersion: 2
-        x: 96
-        y: 65
-        width: 32
+        x: 32
+        y: 0
+        width: 16
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -199,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2b8b59fc382e4662932ee2649e72e05
-      internalID: -6287002357799567390
+      spriteID: 70a07f04f67314e9c87e809c9c85d235
+      internalID: 2535077307327378650
       vertices: []
       indices: 
       edges: []
