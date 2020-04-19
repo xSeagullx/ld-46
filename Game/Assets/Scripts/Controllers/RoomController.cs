@@ -10,7 +10,6 @@ using UnityEngine.UI;
 namespace Controllers {
 public class RoomController : MonoBehaviour {
   public ContextHolder contextHolder;
-  public SceneAsset runScene;
   public UIRoomResourcesDisplay uiResources;
   public Text eventLog;
 
@@ -81,12 +80,12 @@ public class RoomController : MonoBehaviour {
   }
 
   private IEnumerator LoadRunScene() {
-    Debug.Log("Loading scene " + runScene.name + " " + runScene.name);
-    SceneManager.LoadScene(runScene.name, LoadSceneMode.Single);
+    Debug.Log("Loading scene Run");
+    SceneManager.LoadScene("Run", LoadSceneMode.Single);
     
     yield return null;
-    Debug.Log("Setting active scene " + runScene.name + " " + runScene.name);
-    SceneManager.SetActiveScene(SceneManager.GetSceneByName(runScene.name));
+    Debug.Log("Setting active scene Run");
+    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Run"));
   }
 
   public void Sleep() {

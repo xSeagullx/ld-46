@@ -14,7 +14,7 @@ public class RoadCullingSystem : IExecuteSystem {
 
   public void Execute() {
     var distanceFromStart = _players.GetSingleEntity().roadPosition.distanceFromStart;
-    var visibleTilesCount = 22;
+    // visibleTilesCount is 22
     var limitBottom = distanceFromStart - 2 - 2;
     var limitTop = distanceFromStart + 20 + 2;
 

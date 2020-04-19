@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Entitas;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSystem {

@@ -12,8 +12,7 @@ public class RunController : MonoBehaviour, InputAccessor {
   public ContextHolder contextHolder;
   public RoadDictionary roadDictionary;
   public EnemyDictionary enemyDictionary;
-  public MiscDictionary miscDictionary; 
-  public SceneAsset roomScene;
+  public MiscDictionary miscDictionary;
   public GameObject playerObjectPrefab;
 
   private Systems _systems = new Systems();
@@ -138,12 +137,12 @@ public class RunController : MonoBehaviour, InputAccessor {
   }
   
   private IEnumerator LoadRoomScene() {
-    Debug.Log("Loading scene " + roomScene.name + " " + roomScene.name);
-    SceneManager.LoadScene(roomScene.name, LoadSceneMode.Single);
+    Debug.Log("Loading scene Room");
+    SceneManager.LoadScene("Room", LoadSceneMode.Single);
     
     yield return null;
-    Debug.Log("Setting active scene " + roomScene.name + " " + roomScene.name);
-    SceneManager.SetActiveScene(SceneManager.GetSceneByName(roomScene.name));
+    Debug.Log("Setting active scene Room");
+    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Room"));
   }
 }
 }
