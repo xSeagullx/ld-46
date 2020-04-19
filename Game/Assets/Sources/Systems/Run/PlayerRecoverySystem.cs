@@ -24,10 +24,10 @@ public class PlayerRecoverySystem : IExecuteSystem {
         var oldScale = new Vector3(1, 1, 1);
         var newScale = new Vector3(2, 2, 1);
         if (timeSinceCollision < recoveryTime / 2) {
-          gameObject.transform.localScale = Vector3.Lerp(oldScale, newScale, elapsed);
+          gameObject.transform.localScale = Vector3.Lerp(oldScale, newScale, elapsed * 2);
         }
         else {
-          gameObject.transform.localScale = Vector3.Lerp(newScale, oldScale, elapsed);
+          gameObject.transform.localScale = Vector3.Lerp(newScale, oldScale, elapsed * 2);
         }
         
       }

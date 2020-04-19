@@ -13,11 +13,13 @@ public class RunController : MonoBehaviour, InputAccessor {
   public ContextHolder contextHolder;
   public RoadDictionary roadDictionary;
   public EnemyDictionary enemyDictionary;
+  public MiscDictionary miscDictionary; 
   private Scene roomScene;
   public GameObject playerObjectPrefab;
 
   private Systems _systems = new Systems();
   public UIProgressController uiProgressControler;
+  public UIHeartController uiHealthController;
 
   private void Start() {
     roomScene = SceneManager.GetSceneByName("Room");
@@ -36,7 +38,7 @@ public class RunController : MonoBehaviour, InputAccessor {
     _systems
       // Init
       .Add(new RoadCreationSystem(contexts, roadDictionary))
-      .Add(new EnemySpawnSystem(contexts, (entity) => enemyDictionary.SetupView(entity)))
+      .Add(new EnemySpawnSystem(contexts, entity => enemyDictionary.SetupView(entity)))
 
       // Update
       .Add(new CarSpawningSystem(contexts, entity => enemyDictionary.SetupView(entity)))
@@ -47,11 +49,13 @@ public class RunController : MonoBehaviour, InputAccessor {
       .Add(new TransformSyncSystem(contexts))
       .Add(new PlayerRecoverySystem(contexts))
       .Add(new RoadCullingSystem(contexts, Camera.main))
+      .Add(new WarningSystem(contexts, entity => miscDictionary.SetupView(entity)))
 
       // Render
       .Add(new FollowingCameraSystem(contexts, Camera.main))
       .Add(new RoadRenderSystem())
       .Add(new RunProgressUpdateSystem(contexts, (progress) => uiProgressControler.updateProgress(progress)))
+      .Add(new PlayerHealthSystem(contexts, health => uiHealthController.UpdatePlayerHeart(health.current), reason => EndRun(reason)))
 
       ;
 
@@ -82,6 +86,11 @@ public class RunController : MonoBehaviour, InputAccessor {
     }
 
     return DirectionalInput.NONE;
+  }
+
+  public void EndRun(string reason) {
+    Debug.Log("Run over for the reason " + reason);
+    SceneManager.LoadScene(roomScene.handle, LoadSceneMode.Single);
   }
 }
 }

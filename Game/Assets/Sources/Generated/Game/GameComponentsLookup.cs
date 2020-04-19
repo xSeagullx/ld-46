@@ -8,29 +8,33 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Enemy = 0;
-    public const int Food = 1;
-    public const int GameDay = 2;
-    public const int HitRecoveryState = 3;
-    public const int Lane = 4;
-    public const int Level = 5;
-    public const int Money = 6;
-    public const int Panic = 7;
-    public const int Player = 8;
-    public const int PlayerCollision = 9;
-    public const int Road = 10;
-    public const int RoadPosition = 11;
-    public const int RunDescription = 12;
-    public const int TTL = 13;
-    public const int Velocity = 14;
-    public const int View = 15;
+    public const int DangerSource = 0;
+    public const int Enemy = 1;
+    public const int Food = 2;
+    public const int GameDay = 3;
+    public const int Health = 4;
+    public const int HitRecoveryState = 5;
+    public const int Lane = 6;
+    public const int Level = 7;
+    public const int Money = 8;
+    public const int Panic = 9;
+    public const int Player = 10;
+    public const int PlayerCollision = 11;
+    public const int Road = 12;
+    public const int RoadPosition = 13;
+    public const int RunDescription = 14;
+    public const int TTL = 15;
+    public const int Velocity = 16;
+    public const int View = 17;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
+        "DangerSource",
         "Enemy",
         "Food",
         "GameDay",
+        "Health",
         "HitRecoveryState",
         "Lane",
         "Level",
@@ -47,9 +51,11 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(DangerSource),
         typeof(Enemy),
         typeof(Food),
         typeof(GameDay),
+        typeof(Health),
         typeof(HitRecoveryState),
         typeof(Lane),
         typeof(Level),

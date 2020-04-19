@@ -40,21 +40,27 @@ public class PlayerCollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem 
   }
   
   private void CollidedWithTheEnemy(GameEntity player, GameEntity enemy) {
-    var pattern = _contexts.game.road.pattern;
-    var playerLane = player.lane.lane;
-    var closestPavement = player.lane.lane;
-    for (int i = 0; i < Math.Min(closestPavement, pattern.Length - 1 - closestPavement); i++) {
-      if (pattern[playerLane + i] == "pavement") {
-        closestPavement = playerLane + i;
-        break;
+    if (enemy.enemy.type == "car") {
+      var pattern = _contexts.game.road.pattern;
+      var playerLane = player.lane.lane;
+      var closestPavement = player.lane.lane;
+      for (int i = 0; i < Math.Min(closestPavement, pattern.Length - 1 - closestPavement); i++) {
+        if (pattern[playerLane + i] == "pavement") {
+          closestPavement = playerLane + i;
+          break;
+        }
+        if (pattern[playerLane - i] == "pavement") {
+          closestPavement = playerLane - i;
+          break;
+        }
       }
-      if (pattern[playerLane - i] == "pavement") {
-        closestPavement = playerLane - i;
-        break;
-      }
-    }
 
-    player.AddHitRecoveryState(closestPavement, Time.time);
+      player.AddHitRecoveryState(closestPavement, Time.time);
+      player.ReplaceHealth(player.health.current - 1, player.health.max);
+    }
+    else {
+      Debug.Log("Hit human");
+    }
   }
 }
 }

@@ -1,43 +1,16 @@
 fileFormatVersion: 2
-guid: cdf11efe7013542c1a579e28f0b5ea89
+guid: 9eb1e029235024cb08af4c95de188268
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7682994003733143199
-    second: RoadProgress
+      213: -227098485341167511
+    second: danger_sign
   - first:
-      213: -8994148858587888516
-    second: RoadProgressStart
+      213: 5390066078803728997
+    second: warning_sign
   - first:
-      213: 7991754927562077050
-    second: RoadProgressEnd
-  - first:
-      213: 4667090623120792054
-    second: RoadProgressPlayer_1
-  - first:
-      213: -1543630088660135423
-    second: RoadProgressPlayer_2
-  - first:
-      213: -2359126797285079644
-    second: road_progress_start
-  - first:
-      213: -5739601328325217618
-    second: road_progress
-  - first:
-      213: 1207059772344172304
-    second: road_progress_end
-  - first:
-      213: 8373215148646833053
-    second: progress_1
-  - first:
-      213: -3468368421259279120
-    second: progress_2
-  - first:
-      213: -3574820651616021983
-    second: heart
-  - first:
-      213: -651005011376069296
-    second: heart_empty
+      213: 9157872137965028752
+    second: white_sign
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -122,70 +95,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: road_progress_start
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8660fda79ec1d4dfb94a85a8f511cbaa
-      internalID: -2359126797285079644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: road_progress
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc07f630726754876960aa32f6f34ef1
-      internalID: -5739601328325217618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: road_progress_end
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e95413f33ab1c4637af207b9834a8579
-      internalID: 1207059772344172304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: progress_1
+      name: danger_sign
       rect:
         serializedVersion: 2
         x: 0
@@ -199,14 +109,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee5ce196c4f7545efb6bb0052786dfd7
-      internalID: 8373215148646833053
+      spriteID: 9b4b4d51819864573bf1848387c3e2d5
+      internalID: -227098485341167511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: progress_2
+      name: warning_sign
       rect:
         serializedVersion: 2
         x: 32
@@ -220,35 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1514de20cc5a84a4e91b48837c5cc46d
-      internalID: -3468368421259279120
+      spriteID: 39c7277e482e64ea4bae740279962cee
+      internalID: 5390066078803728997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heart
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7aa5758d942814d2e801ddad95d616dd
-      internalID: -3574820651616021983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart_empty
+      name: white_sign
       rect:
         serializedVersion: 2
         x: 0
@@ -262,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3f13d15092b04a0d981f13efcf220ff
-      internalID: -651005011376069296
+      spriteID: 50834683628f24d20a23539f9e492016
+      internalID: 9157872137965028752
       vertices: []
       indices: 
       edges: []

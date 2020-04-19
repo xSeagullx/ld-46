@@ -19,6 +19,9 @@ public class EnemyDictionary : ScriptableObject {
 
     var gameObject = Instantiate(prefabToInstantiate);
     gameObject.transform.position = new Vector3(e.lane.lane, e.roadPosition.distanceFromStart, 0);
+    if (e.enemy.type == "car" && e.velocity.value < 0) {
+      gameObject.transform.Rotate(0, 0, 180);
+    }
     e.AddView(gameObject);
   }
 }
