@@ -3,7 +3,7 @@ using Entitas.CodeGeneration.Attributes;
 
 [Unique, Global]
 public class Resources : IComponent {
-  public int mealCount;
+  public int foodCount;
   public int medsCount;
   public int toiletCount;
   public int money;

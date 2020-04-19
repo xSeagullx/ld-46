@@ -23,7 +23,7 @@ public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
     var resources = _globalContext.resources;
     var panicCount = resources.panicCount;
     var money = resources.money;
-    var mealCount = resources.mealCount;
+    var foodCount = resources.foodCount;
     var medsCount = resources.medsCount;
     var toiletCount = resources.toiletCount;
 
@@ -37,7 +37,7 @@ public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
           money += modification.change;
           break;
         case "food":
-          mealCount += modification.change;
+          foodCount += modification.change;
           break;
         case "meds":
           medsCount += modification.change;
@@ -51,7 +51,7 @@ public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
       }
     }
 
-    _globalContext.ReplaceResources(newPanicCount: panicCount, newMealCount: mealCount, newMedsCount: medsCount,
+    _globalContext.ReplaceResources(newPanicCount: panicCount, newFoodCount: foodCount, newMedsCount: medsCount,
       newToiletCount: toiletCount, newMoney: money, newMaxPanic: resources.maxPanic);
   }
 

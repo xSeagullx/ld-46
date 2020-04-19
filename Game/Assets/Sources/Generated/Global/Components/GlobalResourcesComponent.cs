@@ -12,22 +12,22 @@ public partial class GlobalContext {
     public Resources resources { get { return resourcesEntity.resources; } }
     public bool hasResources { get { return resourcesEntity != null; } }
 
-    public GlobalEntity SetResources(int newMealCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
+    public GlobalEntity SetResources(int newFoodCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
         if (hasResources) {
             throw new Entitas.EntitasException("Could not set Resources!\n" + this + " already has an entity with Resources!",
                 "You should check if the context already has a resourcesEntity before setting it or use context.ReplaceResources().");
         }
         var entity = CreateEntity();
-        entity.AddResources(newMealCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
+        entity.AddResources(newFoodCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
         return entity;
     }
 
-    public void ReplaceResources(int newMealCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
+    public void ReplaceResources(int newFoodCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
         var entity = resourcesEntity;
         if (entity == null) {
-            entity = SetResources(newMealCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
+            entity = SetResources(newFoodCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
         } else {
-            entity.ReplaceResources(newMealCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
+            entity.ReplaceResources(newFoodCount, newMedsCount, newToiletCount, newMoney, newPanicCount, newMaxPanic);
         }
     }
 
@@ -49,10 +49,10 @@ public partial class GlobalEntity {
     public Resources resources { get { return (Resources)GetComponent(GlobalComponentsLookup.Resources); } }
     public bool hasResources { get { return HasComponent(GlobalComponentsLookup.Resources); } }
 
-    public void AddResources(int newMealCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
+    public void AddResources(int newFoodCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
         var index = GlobalComponentsLookup.Resources;
         var component = (Resources)CreateComponent(index, typeof(Resources));
-        component.mealCount = newMealCount;
+        component.foodCount = newFoodCount;
         component.medsCount = newMedsCount;
         component.toiletCount = newToiletCount;
         component.money = newMoney;
@@ -61,10 +61,10 @@ public partial class GlobalEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceResources(int newMealCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
+    public void ReplaceResources(int newFoodCount, int newMedsCount, int newToiletCount, int newMoney, int newPanicCount, int newMaxPanic) {
         var index = GlobalComponentsLookup.Resources;
         var component = (Resources)CreateComponent(index, typeof(Resources));
-        component.mealCount = newMealCount;
+        component.foodCount = newFoodCount;
         component.medsCount = newMedsCount;
         component.toiletCount = newToiletCount;
         component.money = newMoney;

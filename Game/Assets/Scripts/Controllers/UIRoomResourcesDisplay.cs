@@ -13,7 +13,7 @@ public class UIRoomResourcesDisplay : MonoBehaviour {
   public Calendar calendar;
 
   public void UpdateResources(Resources resources) {
-    foodCount.text = resources.mealCount.ToString();
+    foodCount.text = resources.foodCount.ToString();
     medsCount.text = resources.medsCount.ToString();
     moneyCount.text = resources.money.ToString();
     toiletCount.text = resources.toiletCount.ToString();

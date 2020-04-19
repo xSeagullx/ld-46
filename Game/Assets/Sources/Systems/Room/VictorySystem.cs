@@ -19,6 +19,8 @@ public class VictorySystem : ReactiveSystem<GlobalEntity> {
   protected override void Execute(List<GlobalEntity> entities) {
     var day = entities.SingleEntity();
     if (day.gameDay.value > 7) {
+      var log = _contexts.global.CreateEntity();
+      log.AddMessageLog("<color=green><b>Congratulations! You won!</b></color>");
       _contexts.global.ReplaceGameState("win");
     }
   }

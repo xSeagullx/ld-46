@@ -9,7 +9,7 @@ public class Calendar : ScriptableObject {
   public Sprite GetSprite(GameDay day) {
     var dayInt = (int) day.value;
     if (dayInt < daySprites.Length)
-      return daySprites[dayInt];
+      return daySprites[dayInt - 1];
 
     Debug.LogError("Unsupported day " + day.value);
     return null;

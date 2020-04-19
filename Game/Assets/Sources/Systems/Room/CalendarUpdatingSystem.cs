@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Entitas;
 
-public class CalendarUpdatingSystem : ReactiveSystem<GlobalEntity>, ICleanupSystem {
+public class CalendarUpdatingSystem : ReactiveSystem<GlobalEntity>, IInitializeSystem, ICleanupSystem {
   private readonly Contexts _contexts;
   private readonly Action<GameDay> _uiDayUpdate;
 
@@ -27,6 +27,8 @@ public class CalendarUpdatingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
       _contexts.global.ReplaceGameDay(currentDayVal);
 
       if ((int)oldDayVal != (int)currentDayVal) {
+        var e = _contexts.global.CreateEntity();
+        e.AddMessageLog("<b>It's a new day!</b>");
         _uiDayUpdate(_contexts.global.gameDay);
       }
     }
@@ -37,5 +39,9 @@ public class CalendarUpdatingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
     foreach (var timeEvent in _contexts.global.GetGroup(GlobalMatcher.PassingTime).GetEntities()) {
       timeEvent.Destroy();
     }
+  }
+
+  public void Initialize() {
+    _uiDayUpdate(_contexts.global.gameDay);
   }
 }

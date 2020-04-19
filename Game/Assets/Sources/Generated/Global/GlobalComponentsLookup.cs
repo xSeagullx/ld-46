@@ -10,16 +10,18 @@ public static class GlobalComponentsLookup {
 
     public const int GameDay = 0;
     public const int GameState = 1;
-    public const int MessageLog = 2;
-    public const int PassingTime = 3;
-    public const int ResourceModification = 4;
-    public const int Resources = 5;
+    public const int LastSlept = 2;
+    public const int MessageLog = 3;
+    public const int PassingTime = 4;
+    public const int ResourceModification = 5;
+    public const int Resources = 6;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
         "GameDay",
         "GameState",
+        "LastSlept",
         "MessageLog",
         "PassingTime",
         "ResourceModification",
@@ -29,6 +31,7 @@ public static class GlobalComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(GameDay),
         typeof(GameState),
+        typeof(LastSlept),
         typeof(MessageLog),
         typeof(PassingTime),
         typeof(ResourceModification),
