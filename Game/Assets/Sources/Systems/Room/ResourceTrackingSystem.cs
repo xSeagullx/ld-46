@@ -32,6 +32,7 @@ public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
       switch (modification.resourceType) {
         case "panic":
           panicCount += modification.change;
+          panicCount = panicCount > 300 ? 300 : panicCount < 0 ? 0 : panicCount;
           break;
         case "money":
           money += modification.change;
@@ -51,6 +52,9 @@ public class ResourceTrackingSystem : ReactiveSystem<GlobalEntity>, ICleanupSyst
       }
     }
 
+    if (panicCount >= 300) {
+      _globalContext.ReplaceGameState("loss");
+    }
     _globalContext.ReplaceResources(newPanicCount: panicCount, newFoodCount: foodCount, newMedsCount: medsCount,
       newToiletCount: toiletCount, newMoney: money, newMaxPanic: resources.maxPanic);
   }

@@ -25,11 +25,12 @@ public class ResourceLoggingSystem : ReactiveSystem<GlobalEntity> {
       var modification = entity.resourceModification;
       var isGood = entity.resourceModification.change > 0;
       isGood = modification.resourceType == "panic" ? !isGood : isGood;
+      var prefix = (entity.hasMessageLog ? entity.messageLog.message + ". " : "") + StringUtils.Capitalise(modification.resourceType);
       if (isGood) {
-        e.AddMessageLog(StringUtils.Capitalise(modification.resourceType) + " (<color=green>" + modification.change + "</color>)");
+        e.AddMessageLog(prefix + " (<color=green>" + modification.change + "</color>)");
       }
       else {
-        e.AddMessageLog(StringUtils.Capitalise(modification.resourceType) + " (<color=red>" + modification.change + "</color>)");
+        e.AddMessageLog(prefix + " (<color=red>" + modification.change + "</color>)");
       }
     }
   }

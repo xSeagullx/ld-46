@@ -12,22 +12,22 @@ public partial class GameContext {
     public Road road { get { return roadEntity.road; } }
     public bool hasRoad { get { return roadEntity != null; } }
 
-    public GameEntity SetRoad(int newNumLanes, string[] newPattern) {
+    public GameEntity SetRoad(int newNumLanes, string[] newPattern, string[] newVisualPattern) {
         if (hasRoad) {
             throw new Entitas.EntitasException("Could not set Road!\n" + this + " already has an entity with Road!",
                 "You should check if the context already has a roadEntity before setting it or use context.ReplaceRoad().");
         }
         var entity = CreateEntity();
-        entity.AddRoad(newNumLanes, newPattern);
+        entity.AddRoad(newNumLanes, newPattern, newVisualPattern);
         return entity;
     }
 
-    public void ReplaceRoad(int newNumLanes, string[] newPattern) {
+    public void ReplaceRoad(int newNumLanes, string[] newPattern, string[] newVisualPattern) {
         var entity = roadEntity;
         if (entity == null) {
-            entity = SetRoad(newNumLanes, newPattern);
+            entity = SetRoad(newNumLanes, newPattern, newVisualPattern);
         } else {
-            entity.ReplaceRoad(newNumLanes, newPattern);
+            entity.ReplaceRoad(newNumLanes, newPattern, newVisualPattern);
         }
     }
 
@@ -49,19 +49,21 @@ public partial class GameEntity {
     public Road road { get { return (Road)GetComponent(GameComponentsLookup.Road); } }
     public bool hasRoad { get { return HasComponent(GameComponentsLookup.Road); } }
 
-    public void AddRoad(int newNumLanes, string[] newPattern) {
+    public void AddRoad(int newNumLanes, string[] newPattern, string[] newVisualPattern) {
         var index = GameComponentsLookup.Road;
         var component = (Road)CreateComponent(index, typeof(Road));
         component.numLanes = newNumLanes;
         component.pattern = newPattern;
+        component.visualPattern = newVisualPattern;
         AddComponent(index, component);
     }
 
-    public void ReplaceRoad(int newNumLanes, string[] newPattern) {
+    public void ReplaceRoad(int newNumLanes, string[] newPattern, string[] newVisualPattern) {
         var index = GameComponentsLookup.Road;
         var component = (Road)CreateComponent(index, typeof(Road));
         component.numLanes = newNumLanes;
         component.pattern = newPattern;
+        component.visualPattern = newVisualPattern;
         ReplaceComponent(index, component);
     }
 

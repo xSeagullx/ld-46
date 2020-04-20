@@ -38,8 +38,8 @@ public class CarSpawningSystem : IExecuteSystem, IInitializeSystem {
       var e = _contexts.game.CreateEntity();
       e.AddEnemy("car");
       e.AddLane(lane, lane + 1);
-      e.AddRoadPosition(_players.GetSingleEntity().roadPosition.distanceFromStart + 40 * signum);
-      e.AddVelocity(-15 * signum);
+      e.AddRoadPosition(_players.GetSingleEntity().roadPosition.distanceFromStart + 60 * signum);
+      e.AddVelocity(-25 * signum);
       e.AddTTL(10);
       e.AddDangerSource(null);
       _setupView(e);

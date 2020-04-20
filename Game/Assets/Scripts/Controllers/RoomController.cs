@@ -105,10 +105,18 @@ public class RoomController : MonoBehaviour {
   }
 
   private void TransitionStates(string state) {
+    Debug.Log("GameStart transition " + state);
+    var e = _globalContext.CreateEntity();
     switch (state) {
-      case "win": break; // Load win scene 
-      case "panic": break; // Load panic death scene
-      case "run": break; // load run scene
+      case "win":
+        e.AddMessageLog("<color=green>You survived. Congratulations!</color>");
+        break; // Load win scene 
+      case "loss":
+        e.AddMessageLog("<color=red>You went mad. Game over!</color>");
+        break; // Load panic death scene
+      case "run":
+        StartCoroutine(LoadRunScene());
+        break;
     }
   }
 
@@ -125,6 +133,7 @@ public class RoomController : MonoBehaviour {
     var log = _globalContext.CreateEntity();
     if (_globalContext.gameDay.value - _globalContext.lastSlept.time < 14f / 24) {
       log.AddMessageLog("Not tired");
+      return;
     }
     
     log.AddMessageLog("You've slept for 8 hours");

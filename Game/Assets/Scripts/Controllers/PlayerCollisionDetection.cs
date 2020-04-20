@@ -12,5 +12,7 @@ public class PlayerCollisionDetection : MonoBehaviour {
         var collision = contexts.game.CreateEntity();
         var e = contexts.game.GetEntitiesWithView(col.gameObject).SingleEntity();
         collision.AddPlayerCollision(e);
+        Debug.Log("hitting " + col.gameObject.GetInstanceID());
+        col.gameObject.GetComponent<Collider2D>().enabled = false;
     }
 }

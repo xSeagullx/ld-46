@@ -5,5 +5,6 @@ using Entitas.CodeGeneration.Attributes;
 public class Road : IComponent {
   public int numLanes;
   public string[] pattern;
+  public string[] visualPattern;
 }
 

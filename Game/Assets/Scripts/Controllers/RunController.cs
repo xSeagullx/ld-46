@@ -6,6 +6,7 @@ using Sources.Systems.Run;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 namespace Controllers {
 public class RunController : MonoBehaviour, InputAccessor {
@@ -18,6 +19,7 @@ public class RunController : MonoBehaviour, InputAccessor {
   private Systems _systems = new Systems();
   public UIProgressController uiProgressControler;
   public UIHeartController uiHealthController;
+  public UIPanicController uiPanicController;
 
   private string runOverReason;
 
@@ -30,7 +32,29 @@ public class RunController : MonoBehaviour, InputAccessor {
 
     // TODO Cleanup this
     if (!contexts.game.hasRunDescription) {
-      contexts.game.SetRunDescription("food", 100);
+      contextHolder.contexts.game.ReplaceRunDescription("mall", 300);
+      string[] pattern = {
+        "pavement", "pavement_side", 
+        "road", "road_dash",
+        "road", "road_solid",
+        "road_solid_f", "road", 
+        "road_dash_f", "road",
+        "pavement_side_f", "pavement"
+      };
+      contextHolder.contexts.game.ReplaceRoad(pattern.Length, new [] {
+        "pavement", "pavement", 
+        "road", "road",
+        "road", "road",
+        "road", "road", 
+        "road", "road",
+        "pavement", "pavement"
+      }, pattern);
+      contextHolder.contexts.global.ReplaceGameState("run");
+      contextHolder.contexts.game.ReplaceRunReward(new [] {
+        new Reward("Got stocked up!", 0.4f, new ResourceChange("panic", -30), new ResourceChange("food", 4, 8), new ResourceChange("meds", 3, 4), new ResourceChange("toilet", 1, 2)),
+        new Reward("Bought some stuff", 0.4f, new ResourceChange("food", 3), new ResourceChange("meds", 2, 3), new ResourceChange("toilet", 2)),
+        new Reward("There was so little food left!", 0.2f, new ResourceChange("panic", 30), new ResourceChange("food", 1, 2), new ResourceChange("meds", 1, 2), new ResourceChange("toilet", 1)),
+      });
     }
 
     _systems
@@ -55,6 +79,7 @@ public class RunController : MonoBehaviour, InputAccessor {
       .Add(new RoadRenderSystem())
       .Add(new RunProgressUpdateSystem(contexts, (progress) => uiProgressControler.updateProgress(progress)))
       .Add(new PlayerHealthSystem(contexts, health => uiHealthController.UpdatePlayerHeart(health.current), reason => runOverReason = reason))
+      .Add(new PlayerPanicSystem(contexts, panic => uiPanicController.UpdatePlayerPanic(panic.current), reason => runOverReason = reason))
 
       ;
 
@@ -63,8 +88,7 @@ public class RunController : MonoBehaviour, InputAccessor {
     player.AddLane(0, 0);
     player.AddRoadPosition(0);
     player.AddView(Instantiate(playerObjectPrefab));
-    player.AddVelocity(5);
-    player.ReplaceHealth(1, 3);
+    player.AddVelocity(10);
 
     _systems.ActivateReactiveSystems();
     _systems.Initialize();
@@ -112,24 +136,38 @@ public class RunController : MonoBehaviour, InputAccessor {
       resourceModification.AddResourceModification(resource, amount);
     }
 
+    var time = globalContext.CreateEntity();
+    var distanceFromStart = contextHolder.contexts.game.GetGroup(GameMatcher.Player).GetSingleEntity().roadPosition.distanceFromStart;
+    time.AddPassingTime(distanceFromStart / 5f / 60);
+
     string messageText;
     if (reason.StartsWith("fail")) {
-      Add("panic", 30);
       if (reason.EndsWith("injured")) {
-        Add("meds", -2);
-        messageText = "Damn! I'm hit, have to go home!";
+        if (globalContext.resources.medsCount >= 2) {
+          Add("meds", -2);
+          Add("panic", 30);
+          messageText = "<color=red>Damn! I'm hit, have to go home!</color>";
+        }
+        else {
+          Add("panic", 100);
+          messageText = "<color=red>I had no meds and I need them!</color>";
+        }
       }
       else {
-        messageText = "It's too scary there!!! I better stay at home!";
+        Add("panic", 30);
+        messageText = "<color=red>It's too scary there!!! I better stay at home!</color>";
       }
     }
     else {
-      messageText = "Success! Got some goodies!";
-      Add("panic", -10);
-      Add("money", 100);
-      Add("food", 4);
-      Add("meds", 2);
-      Add("toilet", 1);
+      var rewards = contextHolder.contexts.game.runReward.rewards;
+      var runRewardReward = rewards[UnityEngine.Random.Range(0, rewards.Length)]; // TODO weighted random
+      messageText = runRewardReward.message;
+      foreach (var change in runRewardReward._changes) {
+        var amount = change.amountMin == change.amountMax
+          ? change.amountMin
+          : UnityEngine.Random.Range(change.amountMin, change.amountMax);
+        Add(change.type, amount);  
+      }
     }
     
     var message = globalContext.CreateEntity();

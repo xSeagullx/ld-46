@@ -13,9 +13,7 @@ public class EnemySpawnSystem : IInitializeSystem {
   }
 
   public void Initialize() {
-    var numLanes = _contexts.game.road.numLanes;
     var pattern = _contexts.game.road.pattern;
-    var numEnemies = (int) (_contexts.game.runDescription.distanceMeters / 20f * numLanes * 4);
 
     var lanes = new List<int>();
     for (var i = 0; i < pattern.Length; i++) {
@@ -25,10 +23,10 @@ public class EnemySpawnSystem : IInitializeSystem {
     }
 
     int distance = 10;
-    for (var i = 0; i < numEnemies; i++) {
+    while (distance < _contexts.game.runDescription.distanceMeters + 30) {
       Shuffle(lanes);
       int laneI = 0; // Index in shuffled lane
-      for (var i1 = 0; i1 < Random.Range(0, 4); i1++) {
+      for (var i1 = 0; i1 < Random.Range(0, lanes.Count + 1); i1++) {
         var e = _contexts.game.CreateEntity();
         var type = "human";
         e.AddEnemy(type);

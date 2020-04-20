@@ -13,16 +13,18 @@ public static class GameComponentsLookup {
     public const int Health = 2;
     public const int HitRecoveryState = 3;
     public const int Lane = 4;
-    public const int Player = 5;
-    public const int PlayerCollision = 6;
-    public const int Road = 7;
-    public const int RoadPosition = 8;
-    public const int RunDescription = 9;
-    public const int TTL = 10;
-    public const int Velocity = 11;
-    public const int View = 12;
+    public const int Panic = 5;
+    public const int Player = 6;
+    public const int PlayerCollision = 7;
+    public const int Road = 8;
+    public const int RoadPosition = 9;
+    public const int RunDescription = 10;
+    public const int RunReward = 11;
+    public const int TTL = 12;
+    public const int Velocity = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "DangerSource",
@@ -30,11 +32,13 @@ public static class GameComponentsLookup {
         "Health",
         "HitRecoveryState",
         "Lane",
+        "Panic",
         "Player",
         "PlayerCollision",
         "Road",
         "RoadPosition",
         "RunDescription",
+        "RunReward",
         "TTL",
         "Velocity",
         "View"
@@ -46,11 +50,13 @@ public static class GameComponentsLookup {
         typeof(Health),
         typeof(HitRecoveryState),
         typeof(Lane),
+        typeof(Panic),
         typeof(Player),
         typeof(PlayerCollision),
         typeof(Road),
         typeof(RoadPosition),
         typeof(RunDescription),
+        typeof(RunReward),
         typeof(TTL),
         typeof(Velocity),
         typeof(View)

@@ -14,7 +14,7 @@ public class GameStateTransitionSystem : ReactiveSystem<GlobalEntity> {
   }
 
   protected override bool Filter(GlobalEntity entity) {
-    return entity.hasGameDay;
+    return entity.hasGameState;
   }
 
   protected override void Execute(List<GlobalEntity> entities) {

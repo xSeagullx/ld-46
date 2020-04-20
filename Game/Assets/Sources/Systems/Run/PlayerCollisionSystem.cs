@@ -59,7 +59,7 @@ public class PlayerCollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem 
       player.ReplaceHealth(player.health.current - 1, player.health.max);
     }
     else {
-      Debug.Log("Hit human");
+      player.ReplacePanic(player.panic.current - 1, player.panic.max);
     }
   }
 }
